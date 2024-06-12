@@ -1,0 +1,11 @@
+{
+  "name": "online-code-editor-admin-service",
+  "version": "1.0.0",
+  "description": "This is an online code editor, where we will have all the features related to coding submissions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Md Khateebur Rab",
+  "license": "ISC"
+}

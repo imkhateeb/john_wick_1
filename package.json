@@ -4,7 +4,7 @@
   "description": "This is an online code editor, where we will have all the features related to coding submissions",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Md Khateebur Rab",
@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "http-status-codes": "^2.3.0",
     "nodemon": "^3.1.3"
   }
 }

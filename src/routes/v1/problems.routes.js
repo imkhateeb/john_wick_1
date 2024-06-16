@@ -9,7 +9,7 @@ const {
 // Testing ping route
 problemRouter.get('/ping', problemController.pinProblemRoute);
 
-
+// Main routes 
 problemRouter.get('/', problemController.getProblems);
 problemRouter.get('/:id', problemController.getProblem);
 problemRouter.post('/', problemController.addProblem);

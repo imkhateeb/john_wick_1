@@ -1,21 +1,36 @@
 function addProblem(req, res) {
-  console.log("addProblem")
+  return res.status(501).json({
+    success: false,
+    msg: "Not Implemented"
+  })
 }
 
 function getProblems(req, res) {
-  console.log("getProblems")
+  return res.status(501).json({
+    success: false,
+    msg: "Not Implemented"
+  })
 }
 
 function getProblem(req, res) {
-  console.log("getProblem")
+  return res.status(501).json({
+    success: false,
+    msg: "Not Implemented"
+  })
 }
 
 function updateProblem(req, res) {
-  console.log("updateProblem")
+  return res.status(501).json({
+    success: false,
+    msg: "Not Implemented"
+  })
 }
 
 function deleteProblem(req, res) {
-  console.log("deleteProblem")
+  return res.status(501).json({
+    success: false,
+    msg: "Not Implemented"
+  })
 }
 
 function pinProblemRoute(req, res) {

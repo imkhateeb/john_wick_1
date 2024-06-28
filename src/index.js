@@ -4,6 +4,7 @@ const { PORT } = require('./config/server.config');
 const bodyParser = require('body-parser');
 const apiRouter = require('./routes');
 const errorHandler = require('./utils/errorHandler');
+const connectToDB = require('./config/db.config');
 
 
 // Parsing Middleware
@@ -23,6 +24,7 @@ app.get('/ping', (req, res) => {
 app.use(errorHandler);
 
 // Start the server 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
+  await connectToDB();
 })

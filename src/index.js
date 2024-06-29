@@ -3,23 +3,28 @@ const app = express();
 const { PORT } = require('./config/server.config');
 const bodyParser = require('body-parser');
 const apiRouter = require('./routes');
-const BaseError = require('./errors/base.error');
 const errorHandler = require('./utils/errorHandler');
+const connectToDB = require('./config/db.config');
 
+
+// Parsing Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 
-app.use('/api', apiRouter);
 
+// Routes
+app.use('/api', apiRouter);
 app.get('/ping', (req, res) => {
-  res.send('Hello World');
+  return res.send('Hello World');
 });
 
-// Handling Global Errors
+
+// Registering Global Error Handler
 app.use(errorHandler);
 
-// Start the server
-app.listen(PORT, () => {
+// Start the server 
+app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
+  await connectToDB();
 })

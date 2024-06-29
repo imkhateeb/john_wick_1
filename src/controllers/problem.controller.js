@@ -1,38 +1,43 @@
-const { StatusCodes } = require('http-status-codes');
+const NotImplemented = require('../errors/notimplemented.error')
 
-function addProblem(req, res) {
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    success: false,
-    msg: "Not Implemented"
-  })
+function addProblem(req, res, next) {
+  try {
+    throw new NotImplemented("Add Problem")
+  } catch (error) {
+    next(error)
+  }
 }
 
-function getProblems(req, res) {
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    success: false,
-    msg: "Not Implemented"
-  })
+function getProblems(req, res, next) {
+  try {
+    throw new NotImplemented("Get Problems")
+  } catch (error) {
+    next(error)
+  }
 }
 
-function getProblem(req, res) {
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    success: false,
-    msg: "Not Implemented"
-  })
+function getProblem(req, res, next) {
+  try {
+    throw new NotImplemented("Get Problem")
+  } catch (error) {
+    next(error)
+  }
 }
 
-function updateProblem(req, res) {
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    success: false,
-    msg: "Not Implemented"
-  })
+function updateProblem(req, res, next) {
+  try {
+    throw new NotImplemented("Update Problem")
+  } catch (error) {
+    next(error)
+  }
 }
 
-function deleteProblem(req, res) {
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    success: false,
-    msg: "Not Implemented"
-  })
+function deleteProblem(req, res, next) {
+  try {
+    throw new NotImplemented("Delete Problem")
+  } catch (error) {
+    next(error)
+  }
 }
 
 function pinProblemRoute(req, res) {
@@ -48,5 +53,5 @@ module.exports = {
   getProblem,
   updateProblem,
   deleteProblem,
-  pinProblemRoute
+  pinProblemRoute,
 }

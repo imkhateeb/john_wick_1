@@ -5,25 +5,21 @@ class ProblemService {
     this.problemRepository = problemRepository;
   }
 
-
   async createProblem(problemData) {
-    try {
-
-      // Sanitize the markdown content
-      problemData.statement = markdownSanitizer(problemData.statement);
-
-      // Create the problem
-      const problem = await this.problemRepository.createProblem(problemData);
-
-      // Return the created problem
-      return problem;
-
-    } catch (error) {
-      throw error;
-    }
+    problemData.statement = markdownSanitizer(problemData.statement);
+    const problem = await this.problemRepository.createProblem(problemData);
+    return problem;
   }
 
+  async getAllProblems() {
+    const problems = await this.problemRepository.getAllProblems();
+    return problems;
+  }
 
+  async getProblem(problemId){
+    const problem = await this.problemRepository.getProblem(problemId);
+    return problem;
+  }
 }
 
 module.exports = ProblemService;

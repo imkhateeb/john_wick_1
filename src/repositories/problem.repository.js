@@ -4,13 +4,18 @@ class ProblemRepository {
 
   // Creating the problem
   async createProblem(problemData) {
-    try {
-      const problem = await Problem.create(problemData);
-      return problem;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    const problem = await Problem.create(problemData);
+    return problem;
+  }
+
+  async getAllProblems() {
+    const problems = await Problem.find({});
+    return problems;
+  }
+
+  async getProblem(problemId){
+    const problem = await Problem.findOne({_id: problemId});
+    return problem;
   }
 
 }

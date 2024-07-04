@@ -34,7 +34,7 @@ const problemSchema = new mongoose.Schema({
     maxlength: [100, 'Title cannot exceed 100 characters'],
     index: true
   },
-  description: {
+  statement: {
     type: String,
     required: [true, 'Description is required'],
     trim: true,

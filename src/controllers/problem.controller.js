@@ -1,8 +1,23 @@
-const NotImplemented = require('../errors/notimplemented.error')
+const NotImplemented = require('../errors/notimplemented.error');
 
-function addProblem(req, res, next) {
+const { ProblemService } = require('../services');
+const { ProblemRepository } = require('../repositories');
+const { StatusCodes } = require('http-status-codes');
+
+// Initiating a new instance of the ProblemService
+const problemService = new ProblemService(new ProblemRepository());
+
+async function addProblem(req, res, next) {
   try {
-    throw new NotImplemented("Add Problem")
+    const newProblem = await problemService.createProblem(req.body);
+
+    return res.status(StatusCodes.CREATED).json({
+      status: "success",
+      msg: 'Problem created successfully',
+      data: newProblem,
+      error: {}
+    });
+    
   } catch (error) {
     next(error)
   }

@@ -3,8 +3,11 @@ const { StatusCodes } = require('http-status-codes');
 
 
 class NotFoundError extends BaseError {
-  constructor(details) {
-    super("Not Found Error", StatusCodes.NOT_FOUND, "Resource not found", details);
+  constructor(resourceName, resourceValue) {
+    super("Not Found Error", StatusCodes.NOT_FOUND, `The requested resource: ${resourceName} with value ${resourceValue} not found.`, {
+      resourceName,
+      resourceValue
+    });
   }
 }
 

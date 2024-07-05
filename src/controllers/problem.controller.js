@@ -1,5 +1,3 @@
-const NotImplemented = require('../errors/notimplemented.error');
-
 const { ProblemService } = require('../services');
 const { ProblemRepository } = require('../repositories');
 const { StatusCodes } = require('http-status-codes');
@@ -54,34 +52,40 @@ async function getProblem(req, res, next) {
   }
 }
 
-function updateProblem(req, res, next) {
+async function updateProblem(req, res, next) {
+  const { id } = req.params;
+  const problemData = req.body;
   try {
-    throw new NotImplemented("Update Problem")
+    const updatedProblem = await problemService.updateProblem(id, problemData);
+    return res.status(StatusCodes.OK).json({
+      status: "success",
+      msg: 'Problem updated successfully',
+      data: updatedProblem,
+      error: {}
+    })
   } catch (error) {
     next(error)
   }
 }
 
-function deleteProblem(req, res, next) {
+async function deleteProblem(req, res, next) {
+  const { id } = req.params;
   try {
-    throw new NotImplemented("Delete Problem")
+    const deletedProblem = await problemService.deleteProblem(id);
+    return res.status(StatusCodes.OK).json({
+      status: "success",
+      msg: 'Problem deleted successfully',
+      data: deletedProblem,
+      error: {}
+    })
   } catch (error) {
     next(error)
   }
 }
-
-function pinProblemRoute(req, res) {
-  return res.json({
-    succcess: true,
-    msg: "Problem Pinged"
-  })
-}
-
 module.exports = {
   addProblem,
   getProblems,
   getProblem,
   updateProblem,
   deleteProblem,
-  pinProblemRoute,
 }

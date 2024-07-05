@@ -2,8 +2,6 @@ const NotFoundError = require('../errors/notfound.error');
 const { Problem } = require('../models');
 
 class ProblemRepository {
-
-  // Creating the problem
   async createProblem(problemData) {
     const problem = await Problem.create(problemData);
     return problem;
@@ -14,14 +12,33 @@ class ProblemRepository {
     return problems;
   }
 
-  async getProblem(problemId){
-    const problem = await Problem.findOne({_id: problemId});
-    if(!problem){
+  async getProblem(problemId) {
+    const problem = await Problem.findOne({ _id: problemId });
+    if (!problem) {
       throw new NotFoundError("Problem", problemId);
     }
     return problem;
   }
 
+  async updateProblem(problemId, problemData) {
+    const problem = await Problem.findOneAndUpdate(
+      { _id: problemId },
+      problemData,
+      { new: true }
+    );
+    if (!problem) {
+      throw new NotFoundError("Problem", problemId);
+    }
+    return problem;
+  }
+
+  async deleteProblem(problemId) {
+    const problem = await Problem.findOneAndDelete({ _id: problemId });
+    if (!problem) {
+      throw new NotFoundError("Problem", problemId);
+    }
+    return problem;
+  }
 }
 
 module.exports = ProblemRepository;
